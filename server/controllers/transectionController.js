@@ -1,15 +1,5 @@
 import crypto from 'crypto';
-console.log(3)
 import Transaction from '../models/Transaction.js';
-
-
-// Initialize Razorpay
-
-
-
-console.log("Razor_pay key_id",process.env.RAZORPAY_KEY_ID )
-
-console.log("Razor_pay key_secrate",process.env.RAZORPAY_SECRET_KEY )
 
 
 // Create a new transaction
