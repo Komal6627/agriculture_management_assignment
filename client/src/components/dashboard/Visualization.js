@@ -72,7 +72,7 @@ const Visualization = () => {
     };
 
     if (savedToken) {
-      fetchChartData(); // Fetch data if the token exists
+      fetchChartData();
     }
   }, [token]);
 

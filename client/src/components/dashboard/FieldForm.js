@@ -52,7 +52,7 @@ const FieldForm = ({ fieldData, onSave }) => {
               },
             }
           ); // Create new field
-console.log("2",response.data);
+
 
       onSave(response.data);  // Notify parent component about the save
       

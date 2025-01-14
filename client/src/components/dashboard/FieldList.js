@@ -31,23 +31,23 @@ const FieldList = () => {
     };
 
     fetchFields();
-  }, []); // Fetch fields only once when the component mounts
+  }, []);
 
   useEffect(() => {
-    console.log("Useeffect",fields)
-  },[fields])
+    console.log("Useeffect", fields)
+  }, [fields])
 
   // Handle delete field
   const handleDelete = async (fieldId) => {
-    const token = localStorage.getItem('authToken'); // Retrieve the token from localStorage
+    const token = localStorage.getItem('authToken');
     if (token) {
       try {
         await axios.delete(`${host}/field/${fieldId}`, {
           headers: {
-            Authorization: `Bearer ${token}`, // Attach token to request header
+            Authorization: `Bearer ${token}`,
           },
         });
-        setFields(fields.filter(field => field._id !== fieldId)); // Remove deleted field from state
+        setFields(fields.filter(field => field._id !== fieldId));
       } catch (err) {
         setError('Error deleting field. Please try again.');
         console.error('Error deleting field:', err);
@@ -61,27 +61,23 @@ const FieldList = () => {
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Fields</h2>
 
-      {error && <p className="text-red-500 text-sm mb-4">{error}</p>} {/* Display error message */}
+      {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
-      <div className="flex space-x-6"> {/* Flex container for side-by-side layout */}
+      <div className="flex space-x-6">
         {/* Field Form */}
-        <div className="w-1/3"> {/* Allocate 1/3 of the width to the form */}
+        <div className="w-1/3">
           <FieldForm
             fieldData={editingField}
             onSave={(field) => {
-         console.log("Filed", field)
+              console.log("Filed", field)
               if (editingField) {
-                const index = fields.findIndex(item => item._id === field[editingField?"updatedField":"field"]._id);
-             
-      // If index is found, replace the object
-            if (index !== -1) {
-         fields[index] = field[editingField?"updatedField":"field"];
-}
-console.log("4",fields);
+                const index = fields.findIndex(item => item._id === field[editingField ? "updatedField" : "field"]._id);
 
-                // setFields(fields); // Update edited field
 
-                
+                if (index !== -1) {
+                  fields[index] = field[editingField ? "updatedField" : "field"];
+                }
+                console.log("4", fields);
               } else {
                 setFields([field.field, ...fields]); // Add new field to the list
               }
@@ -91,7 +87,7 @@ console.log("4",fields);
         </div>
 
         {/* All Fields Section */}
-        <div className="w-2/3"> {/* Allocate 2/3 of the width to the fields list */}
+        <div className="w-2/3"> 
           <h3 className="text-xl font-bold mb-4">All Fields</h3>
           {fields.length > 0 ? (
             <ul>
