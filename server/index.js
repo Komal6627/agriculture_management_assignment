@@ -8,13 +8,13 @@ import authRoutes from './routes/authRoutes.js'
 import fieldRoutes from './routes/fieldRoutes.js'
 import aiRoutes from './routes/aiRoutes.js'
 
- import transactionRoutes from './routes/transectionRoutes.js'
- import Razorpay from 'razorpay';
+import transactionRoutes from './routes/transectionRoutes.js'
+import Razorpay from 'razorpay';
 
 
 
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID ,
+  key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_SECRET_KEY,
 });
 
@@ -44,7 +44,7 @@ mongoose
   .catch((err) => console.error(err));
 
 
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
